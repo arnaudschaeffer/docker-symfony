@@ -1,0 +1,7 @@
+swiftmailer:
+    transport: ''
+    host: ''
+    username: ''
+    password: ''
+    port: ''
+    spool: { type: memory }

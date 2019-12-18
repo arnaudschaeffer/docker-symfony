@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ -z "$PHP_CONTAINER_NAME" ]; then
+    dir=$(readlink -f .)
+
+    while [ "$dir" != "/" ]
+    do
+        #echo "Dir : $dir"
+        if [ -f $dir/.netapsys-env ]; then
+            #echo "Load $dir/.netapsys-env"
+            . $dir/.netapsys-env
+            if [ -n "$PHP_CONTAINER_NAME" ]; then
+                #echo "Got container $PHP_CONTAINER_NAME"
+                break
+            fi
+        fi
+        dir=$(dirname $dir)
+    done
+fi
+
+if [ -n "$PHP_CONTAINER_NAME" ]; then
+    #echo "Go on $PHP_CONTAINER_NAME"
+    export CONTAINER_NAME=$PHP_CONTAINER_NAME
+    export CONTAINER_EXEC="gosuhome $PWD www-data php"
+    exec ~/dockers/bin/docker-exec.sh "$@"
+fi
+
+#echo "Try system-wide /usr/bin/php"
+exec /usr/bin/php "$@"

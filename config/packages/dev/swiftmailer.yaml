@@ -1,0 +1,6 @@
+swiftmailer:
+    transport: smtp
+    host: 'mail:1025'
+    username: null
+    password: null
+    port: 1025

@@ -1,0 +1,75 @@
+version: '3'
+
+services:
+  apache:
+    image: aschaeffer/apache
+    container_name: boilerplate_apache
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - ./docker/apache/vhosts:/etc/apache2/sites-enabled
+      - .:/var/www/html:rw,cached
+    environment:
+      VIRTUAL_HOST: ${APACHE_URI}
+    depends_on:
+      - php
+    networks:
+      - proxy
+      - default
+
+  db:
+    image: mysql:5.6
+    container_name: boilerplate_db
+    volumes:
+      - .db/data/db:/var/lib/mysql
+      - ./docker/db/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: boilerplate
+      MYSQL_USER: boilerplate
+      MYSQL_PASSWORD: boilerplate
+
+  php:
+    image: aschaeffer/php
+    container_name: boilerplate_php
+    volumes:
+      - .:/var/www/html:rw,cached
+      - ./docker/php/upload.ini:/usr/local/etc/php/conf.d/upload.ini
+      - ./docker/php/memory.ini:/usr/local/etc/php/conf.d/memory.ini
+    environment:
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - mail
+      - db
+    networks:
+      - proxy
+      - default
+
+  node:
+    image: aschaeffer/node
+    container_name: boilerplate_node
+    environment:
+      APP_ENV: ${APP_ENV}
+    volumes:
+      - .:/app
+    working_dir: /app
+    user: 'node'
+
+  mail:
+      image: mailhog/mailhog:latest
+      container_name: boilerplate_mail
+      environment:
+        VIRTUAL_HOST: ${MAIL_URI}
+        VIRTUAL_PORT: 8025
+      expose:
+      - "1025"
+      - "8025"
+      networks:
+      - default
+      - proxy
+
+networks:
+  proxy:
+    external: true
