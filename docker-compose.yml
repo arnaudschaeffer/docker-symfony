@@ -19,7 +19,7 @@ services:
       - default
 
   db:
-    image: mysql:5.6
+    image: mysql:5.7
     container_name: boilerplate_db
     volumes:
       - .db/data/db:/var/lib/mysql

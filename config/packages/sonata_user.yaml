@@ -1,4 +1,4 @@
 sonata_user:
     class:
         user: App\Entity\User
-        group: Sonata\UserBundle\Entity\Group
+        group: App\Application\Sonata\UserBundle\Entity\Group

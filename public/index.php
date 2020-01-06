@@ -17,9 +17,7 @@ if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ??
 }
 
 if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? $_ENV['TRUSTED_HOSTS'] ?? false) {
-    //FIX ME
-    //Request::setTrustedHosts([$trustedHosts]);
-    Request::setTrustedHosts(['local.boilerplate.com']);
+    Request::setTrustedHosts(explode(',', $trustedHosts));
 }
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);

@@ -5,4 +5,5 @@ twig:
     # pre built theme
     #form_themes: ['bootstrap_4_layout.html.twig']
     # custom theme
-    form_themes: ['form/apo_form_theme.html.twig']
+    ## TO_UPDATE
+    form_themes: ['form/bp_form_theme.html.twig']

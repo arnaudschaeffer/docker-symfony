@@ -16,21 +16,21 @@
         "sonata-project/admin-bundle": "^3.51",
         "sonata-project/doctrine-orm-admin-bundle": "^3.9",
         "sonata-project/user-bundle": "^4.4",
-        "symfony/asset": "4.3.*",
-        "symfony/console": "4.3.*",
-        "symfony/dotenv": "4.3.*",
-        "symfony/expression-language": "4.3.*",
-        "symfony/filesystem": "4.3.*",
+        "symfony/asset": "4.4.*",
+        "symfony/console": "4.4.*",
+        "symfony/dotenv": "4.4.*",
+        "symfony/expression-language": "4.4.*",
+        "symfony/filesystem": "4.4.*",
         "symfony/flex": "^1.1",
-        "symfony/form": "4.3.*",
-        "symfony/framework-bundle": "4.3.*",
-        "symfony/lock": "4.3.*",
+        "symfony/form": "4.4.*",
+        "symfony/framework-bundle": "4.4.*",
+        "symfony/lock": "4.4.*",
         "symfony/monolog-bundle": "^3.4",
         "symfony/orm-pack": "^1.0",
-        "symfony/security-bundle": "4.3.*",
+        "symfony/security-bundle": "4.4.*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.4.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
@@ -46,7 +46,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "^1.0",
-        "symfony/web-server-bundle": "4.3.*"
+        "symfony/web-server-bundle": "4.4.*"
     },
     "config": {
         "bin-dir": "bin",
@@ -92,7 +92,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "4.3.*"
+            "require": "4.4.*"
         }
     }
 }

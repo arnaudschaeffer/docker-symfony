@@ -38,6 +38,7 @@ services:
     admin.category:
       class: App\Admin\CategoryAdmin
       arguments: [~, App\Entity\Category, ~]
+      # TO_UPDATE
       tags:
         - { name: sonata.admin, manager_type: orm, label: "Category", group: "Boilerplate" }
 
